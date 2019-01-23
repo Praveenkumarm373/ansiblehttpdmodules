@@ -1,0 +1,8 @@
+---
+- hosts: centos
+  become: yes
+  tasks:
+   - name: apache
+     yum: name=httpd state=latest
+   - name: start httpd
+     service: name=httpd enabled=yes state=started
