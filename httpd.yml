@@ -8,5 +8,5 @@
      service: name=httpd enabled=yes state=started
    - name: install index
      template:
-       src: index.php
+       copy: index.php
        dest: /var/www/html/index.php
