@@ -6,3 +6,7 @@
      yum: name=httpd state=latest
    - name: start httpd
      service: name=httpd enabled=yes state=started
+   - name: install index
+     template:
+       src: index.php
+       dest: /var/www/html/index.php
