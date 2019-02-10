@@ -2,11 +2,17 @@
 - hosts: centos
   become: yes
   tasks:
-   - name: apache
-     yum: name=httpd state=latest
-   - name: start httpd
-     service: name=httpd enabled=yes state=started
-   - name: install index
-     template:
-       copy: index.php
-       dest: /var/www/html/index.php
+   - name: install httpd
+     yum: 
+       name=httpd 
+   - name: install php
+     yum:
+       name: [ 'php', 'php-mysql', 'php-pdo', 'php-gd','php-mbstring' ]
+     service:
+       name: httpd
+       state: restarted
+   - name: file copying
+     copy: 
+      src: /home/ansible/index.php
+      dest: /var/www/html/index.php
+      mode: 0755
