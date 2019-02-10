@@ -11,8 +11,4 @@
      service:
        name: httpd
        state: restarted
-   - name: file copying
-     copy: 
-      src: /home/ansible/index.php
-      dest: /var/www/html/index.php
-      mode: 0755
+  
